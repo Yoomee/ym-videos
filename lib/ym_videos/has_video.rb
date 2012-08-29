@@ -21,6 +21,18 @@ module YmVideos::HasVideo
     video_url.match(YmVideos::VIMEO_REGEX)
   end
   
+  def video_embed_code(options = {})
+    src = video_embed_url(options)
+    options.reverse_merge!(:width => 640, :height => 390)
+    width_height = options.slice(:width, :height).to_param.gsub('&', ' ')    
+    if video_vimeo?
+      out = "<iframe src='#{src}' #{width_height} frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>"
+    else
+      out = "<iframe type='text/html' src='#{src}' #{width_height} frameborder='0'></iframe>"
+    end
+    out.html_safe
+  end
+  
   def video_embed_id
     return nil if video_url.blank?
     if res = video_url.match(YmVideos::YOUTUBE_REGEX)
@@ -30,11 +42,11 @@ module YmVideos::HasVideo
     end
   end
   
-  def video_embed_url
+  def video_embed_url(options = {})
     if video_youtube?
-      "http://www.youtube.com/embed/#{video_embed_id}"
+      "http://www.youtube.com/embed/#{video_embed_id}?autoplay=#{options[:autoplay] ? 1 : 0}"
     elsif video_vimeo?
-      "http://player.vimeo.com/video/#{video_embed_id}?title=0&amp;byline=0&amp;portrait=0&amp;color=ff9933"
+      "http://player.vimeo.com/video/#{video_embed_id}?title=#{options[:show_title] ? 1 : 0}&amp;byline=0&amp;portrait=0&amp;color=ff9933"
     end
   end
   

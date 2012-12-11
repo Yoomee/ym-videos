@@ -17,12 +17,15 @@ Gem::Specification.new do |s|
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", "~> 3.1.0"
-  s.add_dependency 'video_info'
+  s.add_dependency 'video_info', "1.0.0"
+  s.add_development_dependency 'ym_tools', '~> 0.1.1'
+  s.add_development_dependency "geminabox"
 
   # for testing
   s.add_development_dependency "sqlite3"  
   s.add_development_dependency "rspec-rails"
   s.add_development_dependency "factory_girl_rails"  
   s.add_development_dependency "guard-rspec"
+  
   
 end

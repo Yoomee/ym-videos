@@ -44,10 +44,11 @@ module YmVideos::HasVideo
   
   def video_embed_url(options = {})
     if video_youtube?
-      "http://www.youtube.com/embed/#{video_embed_id}?autoplay=#{options[:autoplay] ? 1 : 0}"
+      embed_url = "www.youtube.com/embed/#{video_embed_id}?autoplay=#{options[:autoplay] ? 1 : 0}"
     elsif video_vimeo?
-      "http://player.vimeo.com/video/#{video_embed_id}?title=#{options[:show_title] ? 1 : 0}&amp;byline=0&amp;portrait=0&amp;color=ff9933"
+      embed_url = "player.vimeo.com/video/#{video_embed_id}?title=#{options[:show_title] ? 1 : 0}&amp;byline=0&amp;portrait=0&amp;color=ff9933"
     end
+    "http#{options[:https] ? 's' : ''}://#{embed_url}"
   end
   
   private

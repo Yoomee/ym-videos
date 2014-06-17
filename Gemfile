@@ -1,5 +1,4 @@
-source 'https://yoomee:wLjuGMTu30AvxVyIrq3datc73LVUkvo@gems.yoomee.com'
-source "http://rubygems.org"
+source "https://rubygems.org"
 
 # Declare your gem's dependencies in ym_videos.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
@@ -10,6 +9,7 @@ gemspec
 # your gemspec. These might include edge Rails or gems from your path or
 # Git. Remember to move these dependencies to your gemspec before releasing
 # your gem to rubygems.org.
+gem 'ym_test', :git => 'git@gitlab.yoomee.com:yoomee/ym_test.git'
 
 # To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
+# gem 'debugger'

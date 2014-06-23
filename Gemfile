@@ -9,7 +9,9 @@ gemspec
 # your gemspec. These might include edge Rails or gems from your path or
 # Git. Remember to move these dependencies to your gemspec before releasing
 # your gem to rubygems.org.
-gem 'ym_test', :git => 'git@gitlab.yoomee.com:yoomee/ym_test.git'
+group :test do
+  gem 'ym_test', :git => 'git@gitlab.yoomee.com:yoomee/ym_test.git'
+end
 
 # To use debugger
 # gem 'debugger'

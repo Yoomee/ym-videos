@@ -74,5 +74,5 @@ module YmVideos::HasVideo
   end
   
 end
-YmVideos::YOUTUBE_REGEX = /youtu(.be)?(be.com)?\S*(?:\/|v=)([\w-]+)/
+YmVideos::YOUTUBE_REGEX = /youtu(.be)?(be.com)?\S*(?:\/|v=?)([\w-]+)/
 YmVideos::VIMEO_REGEX = /vimeo\.com\/(?:groups\/[^\/]+\/videos\/)?([0-9]+)/
